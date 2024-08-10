@@ -76,7 +76,7 @@ while True:
                             "random_id": 0,
                         }
                     )
-                elif responce.find("Какой фильм посоветуешь?") >= 0:
+                elif responce.find("какой фильм посоветуешь?") >= 0:
                     time.sleep(random.uniform(0.5, 3))
                     session.method(
                         "messages.send",
@@ -176,7 +176,7 @@ while True:
                             "random_id": 0,
                         }
                     )
-                elif responce.find("Кушаю") >= 0:
+                elif responce.find("ужинаю") >= 0 or responce.find("кушаю") >= 0 or responce.find("завтракаю") >= 0 or responce.find("обедаю") >= 0 or responce.find("ем") >= 0:
                     time.sleep(random.uniform(0.5, 3))
                     session.method(
                         "messages.send",
