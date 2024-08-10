@@ -12,6 +12,8 @@ longpool = VkLongPoll(session)
 hello_list = ("Привет!", "Хай", "Салам", "Доброго времени суток", "Ку")
 bye_list = ("Пока", "И тебе пока!", "До встречи!", "До свидания", "Всего доброго")
 mem_list = ("-220489451_457250621", "-220489451_457250610", "-220489451_457250464", "-220489451_457250592")
+how_are_you_list = ("Хорошо, спасибо!", "Отлично, твои как?", "Плохо(", "Все нормально, а твои как?")
+what_are_you_doing_list = ("Сижу дома", "Лежу, а ты?", "Кушаю, а ты чем занимаешься?", "Собираюсь на тренировку, а ты?")
 
 while True:
     for event in longpool.listen():
@@ -20,13 +22,13 @@ while True:
             print(f'Текст сообщения: {str(event.text)}')
             responce = event.text.lower()
             if event.from_user and not event.from_me:
-                if responce.find("привет") >= 0 or responce.find("здравствуй") >= 0:
+                if responce.find("привет") >= 0 or responce.find("здравствуй") >= 0 or responce.find("здарова") >= 0 or responce.find("салам") >= 0 or responce.find("хай") >= 0 or responce.find("ку") >= 0:
                     time.sleep(random.uniform(0.5, 3))
                     session.method(
                         "messages.send",
                         {
                             "user_id": event.user_id,
-                            "message": random.choise(hello_list),
+                            "message": random.choice(hello_list),
                             "random_id": 0,
                         },
                     )
@@ -47,7 +49,7 @@ while True:
                         "messages.send",
                         {
                             "user_id": event.user_id,
-                            "message": "Хорошо, спасибо!",
+                            "message": random.choice(how_are_you_list),
                             "random_id": 0,
                         },
                     )
@@ -74,13 +76,13 @@ while True:
                             "random_id": 0,
                         }
                     )
-                elif responce.find("фильм") >= 0:
+                elif responce.find("Какой фильм посоветуешь?") >= 0:
                     time.sleep(random.uniform(0.5, 3))
                     session.method(
                         "messages.send",
                         {
                             "user_id": event.user_id,
-                            "message": "Выбери жанр фильма: \n1) Комедия \n2) Ужастик \n Вводить нужно цифру",
+                            "message": "Выбери жанр фильма: \n1) Комедия \n2) Ужастик \n3) Фантастика \n4) Боевик \n Вводить нужно цифру",
                             "random_id": 0,
                         }
                     )
@@ -90,7 +92,7 @@ while True:
                         "messages.send",
                         {
                             "user_id": event.user_id,
-                            "message": "Тупой и еще тупее",
+                            "message": "\n1) Тупой и еще тупее \n2) О чем говорят мужчины \n3) Каха",
                             "random_id": 0,
                         }
                     )
@@ -100,8 +102,97 @@ while True:
                         "messages.send",
                         {
                             "user_id": event.user_id,
-                            "message": "Ужасающий",
+                            "message": "\n1) Ужасающий \n2) Оно \n3) Собиратель душ",
                             "random_id": 0,
                         }
                     )
-
+                elif responce.find("3") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "\n1) Назад в Будущее \n2) Бегущий по лезвию 2049 \n3) Обливион",
+                            "random_id": 0,
+                        }
+                    )
+                elif responce.find("4") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "\n1) Джон Уик \n2) Гнев человеческий \n3) Форсаж",
+                            "random_id": 0,
+                        }
+                    )    
+                elif responce.find("спокойной ночи") >= 0 or responce.find("сладких снов") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "Споки",
+                            "random_id": 0,
+                        },
+                    )
+                elif responce.find("что делаешь?") >= 0 or responce.find("чем занимаешься?") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": random.choice(what_are_you_doing_list),
+                            "random_id": 0,
+                        }
+                    )
+                elif responce.find("хорошо") >= 0 or responce.find("отлично") >= 0 or responce.find("нормально") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "sticker_id": 95130,
+                            "random_id": 0,
+                        },
+                    )
+                elif responce.find("гуляю") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "Хорошей прогулки",
+                            "random_id": 0,
+                        }
+                    )
+                elif responce.find("Сижу") >= 0 or responce.find("Лежу") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "Понятно)",
+                            "random_id": 0,
+                        }
+                    )
+                elif responce.find("Кушаю") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "Приятного аппетита!",
+                            "random_id": 0,
+                        }
+                    )
+                elif responce.find("Иду на тренировку") >= 0 or responce.find("Иду на репетитор") >= 0:
+                    time.sleep(random.uniform(0.5, 3))
+                    session.method(
+                        "messages.send",
+                        {
+                            "user_id": event.user_id,
+                            "message": "Хорошо позаниматься:)",
+                            "random_id": 0,
+                        }
+                    )
